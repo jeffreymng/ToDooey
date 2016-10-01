@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :password, null: false
       t.string :first_name, limit: 64
       t.string :last_name, limit: 64
+
+      t.timestamps
     end
   end
 end
