@@ -1,0 +1,4 @@
+<%= form_for(@user, multipart: true) do |f| %>
+  <%= render partial: 'shared/errors', locals: { errors: @errors } %>
+
+<% end %>
