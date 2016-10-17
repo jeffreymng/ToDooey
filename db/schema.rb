@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 20161001200314) do
   create_table "tasks", force: :cascade do |t|
     t.string   "name",            limit: 256,                 null: false
     t.boolean  "completed",                   default: false, null: false
+    t.boolean  "in_progress",                 default: false
     t.datetime "completion_time"
+    t.datetime "start_time"
     t.integer  "user_id",                                     null: false
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
@@ -26,13 +28,13 @@ ActiveRecord::Schema.define(version: 20161001200314) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",   limit: 64, null: false
-    t.string   "email",                 null: false
-    t.string   "password",              null: false
-    t.string   "first_name", limit: 64
-    t.string   "last_name",  limit: 64
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "username",        limit: 64, null: false
+    t.string   "email",                      null: false
+    t.string   "password_digest",            null: false
+    t.string   "first_name",      limit: 64
+    t.string   "last_name",       limit: 64
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_foreign_key "tasks", "users"
