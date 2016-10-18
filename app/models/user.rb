@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validates :password, format: { with: password_format,
                        message: "must contain at least 1 capital letter, 1 lowercase letter, 1 number, and 1 special character" },
                        length: { in: 6..32 },
-                       allow_nil: true
+                       allow_nil: true,
+                       confirmation: true
   has_secure_password
   validates :first_name, length: { maximum: 64 }
   validates :last_name, length: { maximum: 64 }

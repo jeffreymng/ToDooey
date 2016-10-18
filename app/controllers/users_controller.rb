@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :current_user
+
   def new
     @user = User.new
     if logged_in?
@@ -11,6 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       flash[:success] = "Account created."
+      binding.pry
       redirect_to root_url
     else
       @errors = @user.errors.full_messages
@@ -18,4 +21,10 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name)
+    end
+
 end
