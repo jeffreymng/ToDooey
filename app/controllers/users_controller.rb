@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :current_user
 
+  def show
+  end
+
   def new
     @user = User.new
     if logged_in?
@@ -11,9 +14,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in(@user)
+      session[:user_id] = @user.id
       flash[:success] = "Account created."
-      binding.pry
       redirect_to root_url
     else
       @errors = @user.errors.full_messages
