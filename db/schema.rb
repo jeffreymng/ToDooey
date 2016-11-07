@@ -18,9 +18,7 @@ ActiveRecord::Schema.define(version: 20161001200314) do
   create_table "tasks", force: :cascade do |t|
     t.string   "name",            limit: 256,                 null: false
     t.boolean  "completed",                   default: false, null: false
-    t.boolean  "in_progress",                 default: false
     t.datetime "completion_time"
-    t.datetime "start_time"
     t.integer  "user_id",                                     null: false
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
