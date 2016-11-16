@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :current_user
+
   def new
     redirect_to root_url if logged_in?
   end
