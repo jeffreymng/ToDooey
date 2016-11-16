@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
+  before_action :current_user
+
   def show
+    #do i need a show task page?
   end
 
   def new
@@ -21,4 +24,9 @@ class TasksController < ApplicationController
 
   def destroy
   end
+
+  private
+    def task_params
+      params.require(:task).permit(:name)
+    end
 end
