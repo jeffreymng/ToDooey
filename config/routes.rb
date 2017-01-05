@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   root to: 'users#show'
   resources :users, only: [:new, :create]
-  resources :tasks, except: [:index, :show]
+  resources :tasks, except: [:show]
 end

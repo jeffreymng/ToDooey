@@ -1,0 +1,8 @@
+<%= form_for(@task, multipart: true) do |f| %>
+  <%= render partial: 'shared/errors', locals: { errors: @errors } %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Add this task" %>
+<% end %>

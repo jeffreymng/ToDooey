@@ -14,6 +14,16 @@ class TasksController < ApplicationController
   end
 
   def create
+    @task = Task.new(task_params)
+    @task.user_id = @current_user.id
+    if @task.save
+      flash[:success] = "Task added"
+      redirect_to tasks_url
+    else
+      @errors = @task.errors.full_messages
+      flash.now[:danger] = "Could not add task"
+      render 'new'
+    end
   end
 
   def edit
