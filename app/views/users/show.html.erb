@@ -1,1 +1,14 @@
 <h1>hello</h1>
+
+  <% if logged_in? %>
+    <!-- <ul style="list-style: none">
+      <% @current_user.tasks.each do |task| %>
+        <li><%= task.name %></li>
+      <% end %>
+    </ul> -->
+
+    <%= react_component "Tasks", { data: @tasks } %>
+
+  <% else %>
+    <%= link_to "Log in", login_path %> or <%= link_to "Sign up!", new_user_path %>
+  <% end %>
